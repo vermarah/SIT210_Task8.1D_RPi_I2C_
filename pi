@@ -1,0 +1,17 @@
+from smbus import SMBus
+addr = 0x8
+BUS = SMBus(1)
+
+num = 1
+
+print("1 = ON; 0 = OFF")
+while num == 1:
+    
+    ledstate = input("LETS GO   ")
+    
+    if ledstate == "1":
+        BUS.write_byte(addr, 0x1)
+    elif ledstate == "0":
+        BUS.write_byte(addr, 0x0)
+    else:
+        numb = 0
