@@ -1,0 +1,22 @@
+#include<Wire.h>
+int led1 =A0;
+void setup() {
+    
+    Wire.begin(0x8);
+    Wire.onReceive(receiveEvent);
+    
+    
+    
+    pinMode(led1, OUTPUT);
+    digitalWrite(led1, LOW);
+
+}
+void receiveEvent(int howMany) {
+    while (Wire.available()) {
+        char r = Wire.read();
+        digitalWrite(led1, r);
+    }
+}
+void loop() {
+    delay(2000);
+}
